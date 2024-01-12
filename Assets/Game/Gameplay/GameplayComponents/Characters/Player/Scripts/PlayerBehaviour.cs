@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -6,12 +7,17 @@ using UnityEngine;
 /// </summary>
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("Game manager")]
+    public GameManager gameManager;
     [Header("Base components")]
     public Rigidbody rb;
     public Animator animator;
     [Space(10)]
     [Header("Punch layer mask")]
     public LayerMask punchLayer;
+    [Space(10)]
+    [Header("Throw point")]
+    public Transform throwPoint;
     [Space(10)]
     [Header("Joystick controller")]
     public FloatingJoystick floatingJoy;
@@ -26,20 +32,40 @@ public class PlayerBehaviour : MonoBehaviour
     public float accelerationModifier;
     [Header("How fast plarer desaccelerate")]
     public float desaccelerationModifier;
-    [Space(10)]
-    [Header("Ragdoll Slot")]
-    public GameObject ragdollSlot;
-    [Header("Ragdoll slot speed")]
-    public float ragdollSlotFollowerSpeed;
     //
+    private bool earningCash
+    {
+        get
+        {
+            return gameManager.earningCash;
+        }
+        set
+        {
+            gameManager.earningCash = value;
+        }
+    }
+    private int stackedEnemies
+    {
+        get
+        {
+            return gameManager.stackedEnemiesCount;
+        }
+        set
+        {
+            gameManager.stackedEnemiesCount = value;
+        }
+    }
     private AccelerationType acceleration;
     private RagdollData ragdollData;
     private float currentAcceleration;
     private bool isPunching = false;
     private Vector3 inputDirection;
     private Vector3 lastDirection = Vector3.zero;
+    private List<EnemyBehaviour> enemies = new List<EnemyBehaviour>();
+    private Coroutine throwEnemies = null;
 
     #region Unity methods
+
     public virtual void Start()
     {
         acceleration = AccelerationType.Idle;
@@ -55,6 +81,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public virtual void Update()
     {
+        if (earningCash && throwEnemies == null)
+            throwEnemies = StartCoroutine(ThrowEnemies());
+
         // Calculate input direction.
         inputDirection = new Vector3(floatingJoy.Direction.normalized.x, 0f, floatingJoy.Direction.normalized.y).normalized;
 
@@ -78,6 +107,9 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void MovePlayer()
     {
+        if (earningCash)
+            return;
+
         if (isPunching)
             return;
 
@@ -100,6 +132,9 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void RotatePlayer()
     {
+        if (earningCash)
+            return;
+
         if (isPunching)
             return;
 
@@ -126,6 +161,9 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void CheckPunch()
     {
+        if (earningCash)
+            return;
+
         if (isPunching)
             return;
 
@@ -183,7 +221,10 @@ public class PlayerBehaviour : MonoBehaviour
                 ragdollData.punchDirection = enemy.transform.position - transform.position;
 
                 // Set punched enemy ragdoll.
-                enemy.collider.gameObject.GetComponent<EnemyBehaviour>().Die(ragdollData);
+                EnemyBehaviour newEnemy = enemy.collider.gameObject.GetComponent<EnemyBehaviour>();
+                newEnemy.Die(ragdollData);
+                enemies.Add(newEnemy);
+                stackedEnemies++;
 
                 // The y offset of ragdoll stack.
                 ragdollData.yOffset += 0.5f;
@@ -224,6 +265,33 @@ public class PlayerBehaviour : MonoBehaviour
 
     #endregion
 
+    #region Throw enemies
+
+    /// <summary>
+    /// Throw away stacked enemies.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ThrowEnemies()
+    {
+        for (int i = enemies.Count - 1; i >= 0; i--)
+        {
+            yield return new WaitForSeconds(0.5f);
+            enemies[i].StackedThrow((throwPoint.position - transform.position).normalized * 1.4f);
+        }
+
+        enemies.Clear();
+
+        earningCash = false;
+        stackedEnemies = 0;
+
+        ragdollData.yOffset = 0f;
+        ragdollData.inerciaOffset = 0.025f;
+
+        throwEnemies = null;
+    }
+
+    #endregion
+
     #region Acceleration
 
     /// <summary>
@@ -231,6 +299,9 @@ public class PlayerBehaviour : MonoBehaviour
     /// </summary>
     private void Accelerate()
     {
+        if (earningCash)
+            return;
+
         var joyMagnitude = floatingJoy.Direction.magnitude;
 
         // Set animations and player acceleration related to idle, walk and run states.

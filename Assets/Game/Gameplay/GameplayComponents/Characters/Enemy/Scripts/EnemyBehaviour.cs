@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     public Collider[] colliders;
     [Header("Enemy capsule collider")]
     public CapsuleCollider capsuleCollider;
+    [Header("Stacked enemy rotation offset")]
     public Quaternion offsetRotationLeft;
     //
     private GameObject ragdollFollower;
@@ -137,6 +138,32 @@ public class EnemyBehaviour : MonoBehaviour
 
         rigidbodies[0].transform.position = Vector3.SmoothDamp(rigidbodies[0].transform.position, ragdollFollower.transform.position + new Vector3(0, ragdollData.yOffset, 0), ref currentVelocity, ragdollData.inerciaOffset);
 
+    }
+
+    /// <summary>
+    /// Throw enemie when It's stacked.
+    /// </summary>
+    /// <param name="forceDirection"> Direction to throw .</param>
+    public void StackedThrow(Vector3 forceDirection)
+    {
+        ragdollActive = false;
+        rigidbodies[0].isKinematic = false;
+        rigidbodies[5].isKinematic = false;
+        ApplyForceToRagdoll(forceDirection);
+        StartCoroutine(ResetEnemy());
+    }
+
+    /// <summary>
+    /// Reset enemy behavior after being thrown.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ResetEnemy()
+    {
+        yield return new WaitForSeconds(4f);
+        ToggleRagdoll(false);
+        animator.enabled = true;
+        capsuleCollider.enabled = true;
+        rb.isKinematic = false;
     }
 
     #endregion
