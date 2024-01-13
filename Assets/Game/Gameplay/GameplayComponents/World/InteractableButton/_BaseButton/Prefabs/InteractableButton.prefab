@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: 8f10abfe59ef1954bb88fd12d021a53d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -193,10 +193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a17b9435e65e3548824e2094732e5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   fillImage: {fileID: 7828881297975906287}
+  buttonType: 0
   door: {fileID: 0}
   animator: {fileID: 0}
-  gameManager: {fileID: 0}
 --- !u!65 &6157084323240382146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -283,7 +284,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: 8f10abfe59ef1954bb88fd12d021a53d, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -358,7 +359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: 8f10abfe59ef1954bb88fd12d021a53d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

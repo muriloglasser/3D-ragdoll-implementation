@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b43f0bb06a70e046b78feaf870f8185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   joystickBackground: {fileID: 4469104714355560524}
   joystickHandle: {fileID: 269046846153690917}
 --- !u!1 &4255263167900685298
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: 8f10abfe59ef1954bb88fd12d021a53d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -192,7 +193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: -2413806693520163455, guid: 8f10abfe59ef1954bb88fd12d021a53d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -212,12 +212,7 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns></returns>
     private IEnumerator Punch(RaycastHit enemy)
     {
-        isPunching = true;
-
-        rb.isKinematic = true;
-
-        // Enable rootmotion to animation be more realistic.
-        animator.applyRootMotion = true;
+        isPunching = true;        
 
         // Start punch animation.
         SetPunchAnimation(true);
@@ -256,12 +251,7 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
             yield return null;
-        }
-
-        rb.isKinematic = false;
-
-        // Disable root motion on animation end.
-        animator.applyRootMotion = false;
+        }       
 
         // Finish punch animation.
         SetPunchAnimation(false);

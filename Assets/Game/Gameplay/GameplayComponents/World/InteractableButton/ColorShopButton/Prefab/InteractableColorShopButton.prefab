@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2086040962962952445, guid: dcd7bb907e60c8948968d2209da7cbb4, type: 3}
       propertyPath: m_Name
-      value: InteractableColorShopButton Variant
+      value: InteractableColorShopButton
       objectReference: {fileID: 0}
     - target: {fileID: 2616081618771412378, guid: dcd7bb907e60c8948968d2209da7cbb4, type: 3}
       propertyPath: m_Color.b
@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.689922
       objectReference: {fileID: 0}
+    - target: {fileID: 5704476172860733474, guid: dcd7bb907e60c8948968d2209da7cbb4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: 8f10abfe59ef1954bb88fd12d021a53d, type: 3}
     - target: {fileID: 6598224980146400212, guid: dcd7bb907e60c8948968d2209da7cbb4, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -145,6 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1900f2a9d14f5c42bb8a60b6d259037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillImage: {fileID: 1764436558925199920}
   gameManager: {fileID: 0}
+  fillImage: {fileID: 1764436558925199920}
   buttonType: 2
