@@ -10,22 +10,23 @@ public class GameManager : MonoBehaviour
 {
     [Header("Level shop UI")]
     public GameObject levelShop;
+    [Header("Color shop UI")]
+    public GameObject colorShop;
     [Header("Game save data")]
     public SaveData saveData;
     [HideInInspector]
-    public ButtonInteractionData buttonData; 
+    public ButtonInteractionData buttonData;
     [HideInInspector]
-    public int stackedEnemiesCount = 0; 
+    public int stackedEnemiesCount = 0;
 
     #region Unity methods
 
     private void Start()
     {
-        LoadData(); 
+        LoadData();
     }
 
     #endregion
-
 
     #region Level up shop UI
 
@@ -35,6 +36,18 @@ public class GameManager : MonoBehaviour
     public void OpenLevelUpShopUI()
     {
         levelShop.SetActive(true);
+    }
+
+    #endregion
+
+    #region Color shop UI
+
+    /// <summary>
+    /// Set active level shop ui.
+    /// </summary>
+    public void OpenColorShopUI()
+    {
+        colorShop.SetActive(true);
     }
 
     #endregion
@@ -65,6 +78,15 @@ public class GameManager : MonoBehaviour
     public void AddLevel()
     {
         saveData.playerLevel++;
+    }
+
+    /// <summary>
+    /// Unlock new color.
+    /// </summary>
+    /// <param name="colorIndex"> Color index to unlock. </param>
+    public void UnlockColor(int colorIndex)
+    {
+        saveData.unlockedColors.Add(colorIndex);
     }
 
     /// <summary>
@@ -117,15 +139,16 @@ public class GameManager : MonoBehaviour
 [System.Serializable]
 public class SaveData
 {
-    public int coins; 
-    public int playerLevel; 
-    public List<int> unlockedColors; 
-
-    
+    public int coins;
+    public int playerLevel;
+    public int currentColor;
+    public List<int> unlockedColors;
     public SaveData()
     {
         coins = 0;
         playerLevel = 1;
+        currentColor = 0;
         unlockedColors = new List<int>();
+        unlockedColors.Add(0);
     }
 }

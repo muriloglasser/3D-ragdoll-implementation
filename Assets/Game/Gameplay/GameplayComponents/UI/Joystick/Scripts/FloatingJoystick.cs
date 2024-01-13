@@ -45,6 +45,7 @@ public class FloatingJoystick : MonoBehaviour
 
     void Update()
     {
+        // If any button was pressed.
         if (buttonData.isInteracting)
         {
             ResetJoystick();

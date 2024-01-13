@@ -57,7 +57,6 @@ public class EnemyBehaviour : MonoBehaviour
         this.ragdollData = ragdollData;
 
         // Set main rb as kinematic to enable ragdoll.
-        rb.isKinematic = true;
         capsuleCollider.enabled = false;
         animator.enabled = false;
 
@@ -65,7 +64,7 @@ public class EnemyBehaviour : MonoBehaviour
         ToggleRagdoll(true);
 
         // Apply punch force.
-        ApplyForceToRagdoll(ragdollData.punchDirection);
+        ApplyForceToRagdoll(ragdollData.punchDirection, 2);
 
         // Wait 3 secs and go to player head.
         StartCoroutine(WaitToFloat());
@@ -95,11 +94,11 @@ public class EnemyBehaviour : MonoBehaviour
     /// Apply punch force to ragdoll.
     /// </summary>
     /// <param name="forceDirection"> Force direction. </param>
-    private void ApplyForceToRagdoll(Vector3 forceDirection)
+    private void ApplyForceToRagdoll(Vector3 forceDirection, float multiplier = 1)
     {
         foreach (Rigidbody rb in rigidbodies)
         {
-            rb.AddForce(forceDirection * 13, ForceMode.Impulse);
+            rb.AddForce(forceDirection * 13 * multiplier, ForceMode.Impulse);
         }
     }
 
@@ -163,7 +162,6 @@ public class EnemyBehaviour : MonoBehaviour
         ToggleRagdoll(false);
         animator.enabled = true;
         capsuleCollider.enabled = true;
-        rb.isKinematic = false;
     }
 
     #endregion

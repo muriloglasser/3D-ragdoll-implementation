@@ -23,7 +23,9 @@ public class UICoins : MonoBehaviour
 
     private void Start()
     {
+        // Set player current coins.
         lastCoinsNumber = gameManager.saveData.coins;
+        coinsText.text = gameManager.saveData.coins.ToString();
     }
 
     private void Update()

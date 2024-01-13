@@ -9,6 +9,9 @@ public class PlayerBehaviour : MonoBehaviour
 {
     [Header("Game manager")]
     public GameManager gameManager;
+    [Header("List of colors")]
+    public ColorDataScriptable colorData;
+    public Material skinColor;
     [Header("Base components")]
     public Rigidbody rb;
     public Animator animator;
@@ -59,6 +62,14 @@ public class PlayerBehaviour : MonoBehaviour
             gameManager.stackedEnemiesCount = value;
         }
     }
+    private int currentColor
+    {
+        get
+        {
+            return gameManager.saveData.currentColor;
+        }      
+    }
+
     private AccelerationType acceleration;
     private RagdollData ragdollData;
     private float currentAcceleration;
@@ -70,7 +81,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     #region Unity methods
 
-    public virtual void Start()
+    private void Start()
     {
         acceleration = AccelerationType.Idle;
 
@@ -81,9 +92,12 @@ public class PlayerBehaviour : MonoBehaviour
             yOffset = 0f,
             inerciaOffset = 0.045f,
         };
+
+        // Set player color.
+        skinColor.SetColor("_Color", colorData.colors[currentColor].color);
     }
 
-    public virtual void Update()
+    private void Update()
     {
         // Check if is the throw button and then throw enemies.
         if (buttonData.isInteracting && buttonData.buttonType == ButtonType.Throw && throwEnemies == null)
@@ -96,7 +110,7 @@ public class PlayerBehaviour : MonoBehaviour
         Accelerate();
     }
 
-    public virtual void FixedUpdate()
+    private void FixedUpdate()
     {
         MovePlayer();
         RotatePlayer();
@@ -235,10 +249,10 @@ public class PlayerBehaviour : MonoBehaviour
                 stackedEnemies++;
 
                 // The y offset of ragdoll stack.
-                ragdollData.yOffset += 0.8f;
+                ragdollData.yOffset += 0.7f;
 
                 // The inertia of ragdoll stack.
-                ragdollData.inerciaOffset += 0.025f;
+                ragdollData.inerciaOffset += 0.055f;
             }
 
             yield return null;
@@ -305,7 +319,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         stackedEnemies = 0;
         ragdollData.yOffset = 0f;
-        ragdollData.inerciaOffset = 0.025f;
+        ragdollData.inerciaOffset = 0.045f;
         throwEnemies = null;
     }
 

@@ -112,12 +112,18 @@ public class InteractableButton : MonoBehaviour
     #endregion
 }
 
+/// <summary>
+/// Handle current pressed button states.
+/// </summary>
 public struct ButtonInteractionData
 {
     public bool isInteracting;
     public ButtonType buttonType;
 }
 
+/// <summary>
+/// Button types enum.
+/// </summary>
 public enum ButtonType
 {
     Throw,

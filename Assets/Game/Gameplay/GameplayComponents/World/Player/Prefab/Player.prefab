@@ -997,19 +997,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06ecfa65efd73148a58e3cd16456c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  colorData: {fileID: 11400000, guid: 79caf145976c2ca47b3dbde2263caf43, type: 2}
+  skinColor: {fileID: 2100000, guid: 1ee1f830337e4174fa2de7736e88c683, type: 2}
   rb: {fileID: 5114925517993421251}
   animator: {fileID: 2066186575001060857}
   punchLayer:
     serializedVersion: 2
     m_Bits: 64
+  throwPoint: {fileID: 0}
   floatingJoy: {fileID: 0}
   rotationSpeed: 120
   minAcceleration: 2
-  maxAcceleration: 5
+  maxAcceleration: 8
   accelerationModifier: 8
   desaccelerationModifier: 3
-  ragdollSlot: {fileID: 2124034801762243031}
-  ragdollSlotFollowerSpeed: 10
 --- !u!95 &2066186575001060857
 Animator:
   serializedVersion: 7

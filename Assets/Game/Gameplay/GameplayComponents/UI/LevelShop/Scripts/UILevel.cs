@@ -73,8 +73,15 @@ public class UILevel : MonoBehaviour
     /// </summary>
     public void SetUpNextLevel()
     {
-        // Can not buy.
-        if (currentCoins < levels[currentLevel - 1].price)
+        // Reached last level.
+        if (currentLevel == levels.Count + 1)
+        {
+            buyBtn.interactable = false;
+            levelTxt.text = levels[levels.Count - 1].levelName;
+            priceTxt.text = "MAX";
+            return;
+        }
+        else if (currentCoins < levels[currentLevel - 1].price)
             buyBtn.interactable = false;
         else
             buyBtn.interactable = true;
@@ -98,8 +105,17 @@ public class UILevel : MonoBehaviour
         // Save game.
         gameManager.Save();
 
-        // Show next level.
-        SetUpNextLevel();
+        // Reached last level.
+        if (currentLevel == levels.Count + 1)
+        {
+            buyBtn.interactable = false;
+            levelTxt.text = levels[levels.Count - 1].levelName;
+            priceTxt.text = "MAX";
+            return;
+        }
+        else
+            // Show next level.
+            SetUpNextLevel();
     }
 
     /// <summary>
