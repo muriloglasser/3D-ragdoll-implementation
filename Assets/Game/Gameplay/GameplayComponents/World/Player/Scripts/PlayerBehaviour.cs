@@ -285,6 +285,8 @@ public class PlayerBehaviour : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ThrowEnemies()
     {
+        rb.isKinematic = true;
+
         // Throw enemies.
         for (int i = enemies.Count - 1; i >= 0; i--)
         {
@@ -307,6 +309,7 @@ public class PlayerBehaviour : MonoBehaviour
             buttonType = cachedButton
         };
 
+        rb.isKinematic = false;
         stackedEnemies = 0;
         ragdollData.yOffset = 0f;
         ragdollData.inerciaOffset = 0.045f;

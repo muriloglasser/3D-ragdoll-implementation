@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 7963419005768732246}
+    - target: {fileID: 6423147273323364579, guid: 420d2b4df5cc6ce4ca2eb6705daf5c71, type: 3}
+      propertyPath: offset.z
+      value: -15.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7162402862290082960, guid: 420d2b4df5cc6ce4ca2eb6705daf5c71, type: 3}
       propertyPath: gameManager
       value: 
@@ -237,7 +241,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6636634885017395401, guid: dac647576d367234aa3c8e279e45bcc2, type: 3}
       propertyPath: m_Name
-      value: Lighting
+      value: Light
       objectReference: {fileID: 0}
     - target: {fileID: 6636634885017395401, guid: dac647576d367234aa3c8e279e45bcc2, type: 3}
       propertyPath: m_IsActive
