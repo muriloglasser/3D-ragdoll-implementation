@@ -1,15 +1,7 @@
 # 3D-ragdoll-implementation
 
-Description
-Unity 3D ragdoll usage example
-
-Table of Contents
-Features
-Inertia Mechanics
-Upgrading
-Contributing
-License
-Features
+# Description
+Unity 3D ragdoll usage example.
 
 # Player Interaction:
 Control the character with a joystick.
@@ -18,8 +10,8 @@ Execute punches using Gym Beast-like ragdoll mechanics.
 # Money Generation:
 Stack punched characters vertically on the player's back.
 Deposit stacked characters in a designated area to earn money.
-Inertia Mechanics:
 
+# Inertia Mechanics:
 Characters stacked on the player's back exhibit inertia while walking.
 No use of joints or animations; all movement is calculated via code.
 
