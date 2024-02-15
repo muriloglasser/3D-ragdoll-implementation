@@ -52,3 +52,9 @@ Experience inertia as characters are stacked on your back while walking. The mov
 
 ![](Gifs/3d-ragdoll-inertia.gif)
 
+## Important Notice
+
+Please be aware that all assets in this project are intended for use only within the scope of this project. While you are allowed to use these assets in other projects, self-publishing or any form of public distribution is strictly prohibited.
+
+Thank you for your understanding and cooperation.
+
