@@ -3,6 +3,12 @@
 # Overview
 This Unity 3D project showcases a dynamic ragdoll system, allowing players to control a character using a joystick, execute punches, stack defeated enemies on their back to generate money, and purchase upgrades to enhance the gameplay counting stacked enemies.
 
+## Important Notice
+
+Please be aware that all assets in this project are intended for use only within the scope of this project. While you are allowed to use these assets in other projects, self-publishing or any form of public distribution is strictly prohibited.
+
+Thank you for your understanding and cooperation.
+
 ## APK for test
 [Download APK](https://github.com/muriloglasser/3D-ragdoll-implementation/blob/Readme-update/Punch%20Game.apk)
 
@@ -52,9 +58,7 @@ Experience inertia as characters are stacked on your back while walking. The mov
 
 ![](Gifs/3d-ragdoll-inertia.gif)
 
-## Important Notice
+# Thank You
 
-Please be aware that all assets in this project are intended for use only within the scope of this project. While you are allowed to use these assets in other projects, self-publishing or any form of public distribution is strictly prohibited.
-
-Thank you for your understanding and cooperation.
+I sincerely appreciate you taking the time to explore this project. I hope you enjoyed the experience and found valuable information. If you have any questions or suggestions, feel free to share them.
 
